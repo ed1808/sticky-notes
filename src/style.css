@@ -1,0 +1,211 @@
+:root {
+  font-family: "Fira Code", monospace;
+  font-weight: 400;
+  font-optical-sizing: auto;
+
+  color-scheme: light dark;
+  color: light-dark(#212529, #f9f9f9);
+  background-color: light-dark(#f9f9f9, #212529);
+
+  font-style: normal;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  height: 100dvh;
+}
+
+.context-menu {
+  position: absolute;
+  z-index: 9999;
+  box-shadow: 0 1px 2px 0 #171B1F40; 
+  cursor: pointer;
+  transition: all 250ms ease;
+
+  & .context-menu-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #ff1b1c;
+    color: #f9f9f9; 
+    cursor: pointer;
+    transition: all 250ms ease;
+  }
+
+  & .context-menu-option:hover {
+    background-color: #ff4a4a;
+  }
+}
+
+.container {
+  position: relative;
+  padding: 1rem;
+  height: 100%;
+
+  & *.hidden {
+    display: none;
+  }
+
+  & .search-bar {
+    display: flex;
+    margin-bottom: 0.5rem;
+    justify-content: center;
+
+    & input {
+      width: clamp(300px, 50%, 1460px);
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.25rem;
+      background: light-dark(#efefef, #2B2F33);
+      box-shadow: 0 1px 2px 0 #171B1F40; 
+      outline: transparent solid 3px;
+      transition: all 250ms ease;
+    }
+
+    & input:hover {
+      transform: scale(1.05);
+    }
+
+    & input:focus,
+    & input:active {
+      outline-color: #0496ff;
+      transform: scale(1.05);
+    }
+  }
+
+  & .notes-board {
+    height: calc(100% - 3rem);
+  }
+
+  & .add-note {
+    position: absolute;
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    bottom: 1.5rem; 
+    right: 1.5rem;
+    border: none;
+    border-radius: 50%;
+    background-color: light-dark(#0496ff, #14cc60);
+    box-shadow: 0 1px 2px 0 #171B1F40; 
+    color: light-dark(#f9f9f9, #212529);
+    cursor: pointer;
+    transition: all 250ms ease;
+  }
+
+  & .add-note:hover {
+    transform: scale(1.15);
+  }
+
+  & .add-note:active {
+    transform: scale(0.95); 
+  }
+
+  & .note {
+    position: absolute;
+    height: 16rem;
+    width: 16rem;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    background-color: #e6f14a;
+    box-shadow: 0 10px 15px -3px #0000003a, 0 4px 6px -4px #0000003a;
+    color: #212529;
+    transition: all 250ms ease;
+    user-select: none;
+  }
+
+  & .note:active {
+    cursor: grabbing;
+  }
+
+  & .note > div + div {
+    margin-top: 0.5rem;
+  }
+
+  & .note .note-header {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  & .note .note-header .note-title-container {
+    width: 100%;
+    overflow: hidden;
+    transition: all 250ms ease;
+  }
+
+  & .note .note-header:hover .note-title-container {
+    width: calc(100% - 1.875rem);
+  } 
+
+  & .note .note-header .note-title-container input[type="text"] {
+    padding: 0 0.5rem;
+    width: 100%;
+    height: 2.25rem;
+    color: inherit;
+    border: 3px solid transparent;
+    border-radius: 0.125rem;
+    background: transparent;
+    outline: none;
+    transition: all 250ms ease;
+  }
+
+  & .note .note-header .note-title-container input[type="text"]:focus,
+  & .note .note-header .note-title-container input[type="text"]:focus-visible {
+    border-color: #ff7f11;
+  }
+
+  & .note .note-header .note-title-container h2 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  & .note .note-header .note-actions {
+    display: flex;
+    width: 0;
+    align-items: center;
+    justify-content: center;
+    transition: width 250ms ease;
+  }
+
+  & .note .note-header:hover .note-actions {
+    width: 1.875rem;
+  }
+
+  & .note .note-header .note-actions button {
+    display: flex;
+    width: 100%;
+    height: 1.875rem;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #212529; 
+    cursor: pointer;
+    transition: all 250ms ease;
+  }
+
+  & .note .note-header .note-actions button:hover {
+    background-color: #21252921;
+  }
+
+  & .note .note-content {
+    height: calc(100% - 44px);
+    border-radius: 0.0625rem;
+    overflow-y: auto;
+    outline: transparent solid 3px;
+    transition: all 250ms ease;
+  }
+
+  & .note .note-content:focus {
+    outline-color: #ff7f11;
+  }
+}
